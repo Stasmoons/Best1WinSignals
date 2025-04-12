@@ -631,7 +631,7 @@
                 randomIndexes.forEach((index, i) => {
                     setTimeout(function() {
                         audio.currentTime = 0; // Перематываем звук на начало
-                        audio.play(); // Воспроизводим звук
+                        // audio.play(); // Воспроизводим звук
                         $(squares[index]).explode({
                             radius: 100,
                             minRadius: 20,

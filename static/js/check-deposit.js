@@ -1,5 +1,3 @@
-const API_URL = urlParams.get("api_url");
-
 let depositLink;
 
 // Запускаем при загрузке страницы
