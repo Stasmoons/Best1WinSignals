@@ -99,7 +99,7 @@ function createModalElements() {
     modal.style.height = '100vh';
     modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
     modal.style.zIndex = '1000';
-    modal.style.display = 'none';
+    // modal.style.display = 'none';
     modal.style.justifyContent = 'center';
     modal.style.alignItems = 'center';
     modal.style.flexDirection = 'column';
@@ -109,6 +109,7 @@ function createModalElements() {
     modalContent.style.display = 'flex';
     modalContent.style.flexDirection = 'column';
     modalContent.style.alignItems = 'center';
+    modalContent.style.justifyContent = 'space-around';
     modalContent.style.backgroundColor = '#1a1a2e';
     modalContent.style.padding = '20px';
     modalContent.style.borderRadius = '10px';
@@ -143,14 +144,14 @@ function createModalElements() {
     const title = document.createElement('h2');
     title.textContent = translations.error[LOCALE_CODE];
     title.style.color = '#ffffff';
-    title.style.marginBottom = '15px';
+    title.style.margin = '0';
     
     // Текст сообщения
     const message = document.createElement('p');
     message.textContent = translations.make_deposit[LOCALE_CODE];
     message.style.color = '#cccccc';
-    message.style.marginBottom = '20px';
     message.style.textAlign = 'center';
+    message.style.margin = '0';
     
     // Кнопка подписки
     modalSubscribeBtn = document.createElement('a');
@@ -160,11 +161,10 @@ function createModalElements() {
     modalSubscribeBtn.style.color = 'white';
     modalSubscribeBtn.style.textDecoration = 'none';
     modalSubscribeBtn.style.border = 'none';
-    modalSubscribeBtn.style.padding = '10px 20px';
+    modalSubscribeBtn.style.padding = '10px 30px';
     modalSubscribeBtn.style.borderRadius = '5px';
     modalSubscribeBtn.style.cursor = 'pointer';
     modalSubscribeBtn.style.fontSize = '16px';
-    modalSubscribeBtn.style.marginBottom = '15px';
 
     // Собираем модальное окно
     modalContent.appendChild(title);
