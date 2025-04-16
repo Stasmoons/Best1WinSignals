@@ -1,87 +1,58 @@
 let depositLink;
 
-// Запускаем при загрузке страницы
-document.addEventListener('DOMContentLoaded', init);
-
-// Проверяем подписку при загрузке страницы
-document.querySelector(".check-deposit-get-signal").addEventListener("click", checkDeposit);
-
-
-async function getDepositLink(localeCode = 'en') {
-    try {
-      const url = `${API_URL}/deposit-link?locale_code=${localeCode}`;
-      const response = await fetch(url, {
-        headers: {
-          'Accept': 'application/json',
-          'ngrok-skip-browser-warning': 1,  // Чтобы ngrok не показывал свою страницу, а давал результат
-        }
-      });  
-      const data = await response.json();
-      
-      if (data.error) {
-        throw new Error(data.error);
-      }  
-      return data.result;
-    } 
-    catch (error) {
-      console.error('Ошибка при получении ссылки:', error);
-      throw error; // Перебрасываем ошибку для обработки в вызывающем коде
-    }
-  }
-  
-  // Пример использования с обработкой ошибок
-  async function init() {
-    try {    
-      depositLink = await getDepositLink(LOCALE_CODE);
-      console.log('Ссылка на депозит:', depositLink);
-
-      if (!modal) {
-        createModalElements();
-      }
-    } catch (error) {
-      console.error('Финальная ошибка:', error.message);
-      // Показать сообщение об ошибке пользователю
-    }
-  }
-  
-
 // Флаг для отслеживания подписки
 let hasDeposit = false;
+
+// Пример использования с обработкой ошибок
+document.addEventListener("DOMContentLoaded", async function (e) {
+  try {    
+    hasDeposit = await isDepositMade(e);
+    if (!modal) {
+      createModalElements();
+    }
+  } catch (error) {
+    console.error('Финальная ошибка:', error.message);
+  }
+})
+
+// Проверяем подписку при загрузке страницы
+document.querySelector(".check-deposit-get-signal").addEventListener("click", function(e) {
+  if (!hasDeposit) {
+    showDepositModal();
+    e.preventDefault();
+    e.stopPropagation();
+  }
+});
+
 
 // Элементы модального окна
 let modal, modalContent, modalSubscribeBtn;
 
-async function checkDeposit(e) {
-    // Если уже есть подписка, ничего не делаем
-    if (hasDeposit) return;
-    
-    try {
-        const url = `${API_URL}/check-deposit?sub1=${SUB1}`;
-        console.log(url);
 
-        const response = await fetch(url, {
-            headers: {
-            'Accept': 'application/json',
-            'ngrok-skip-browser-warning': 1,  // Чтобы ngrok не показывал свою страницу, а давал результат
-            }
-        });  
-        const data = await response.json();
-        console.log(url);
+async function isDepositMade() {
+  try {
+      const url = `${API_URL}/check-deposit?sub1=${SUB1}`;
+      console.log(url);
 
+      const response = await fetch(url, {
+          headers: {
+          'Accept': 'application/json',
+          'ngrok-skip-browser-warning': 1,  // Чтобы ngrok не показывал свою страницу, а давал результат
+          }
+      });  
+      const data = await response.json();
 
-        if (data.result) {
-            hasDeposit = true;
-        } else {
-            showSubscribeModal();
-        }
-    } catch (error) {
-        console.error('Ошибка при проверке депозита:', error);
-        // В случае ошибки тоже показываем окно подписки
-        showSubscribeModal();
-    }
+      if (data.result) {
+          return true;
+      } else {
+        return false;
+      }
+  } catch (error) {
+    return false;
+  }
 }
 
-function showSubscribeModal() {
+function showDepositModal() {
     // Создаем элементы модального окна, если их еще нет
     if (!modal) {
         createModalElements();
@@ -99,7 +70,7 @@ function createModalElements() {
     modal.style.height = '100vh';
     modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
     modal.style.zIndex = '1000';
-    // modal.style.display = 'none';
+    modal.style.display = 'none';
     modal.style.justifyContent = 'center';
     modal.style.alignItems = 'center';
     modal.style.flexDirection = 'column';

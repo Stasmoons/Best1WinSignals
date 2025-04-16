@@ -338,12 +338,16 @@
     }
 
     </style>
+        <link rel="stylesheet" type="text/css" href="static/css/back-button.css">    
 </head>
 <body>
     <!-- <div id="notification">
         Разыгрываем ваучеры!
         <button class="notification-button" onclick="window.location.href='https://t.me/negociokazik';">Перейти</button>
     </div> -->
+    <a class="site-nav" href="/choose-game.html"></a>
+
+
     <div class="container">
         <img src="static/pirates1.png" alt="Череп 1" id="skull1">
         <img src="static/pirates1.png" alt="Череп 2" id="skull2">
@@ -351,7 +355,7 @@
         <img src="static/pirates3.png" alt="Алмаз" id="diamond" class="diamond" style="display: none;">
     </div>
     <div class="button-container">
-    <button class="start-button" onclick="openModal()">
+    <button class="start-button check-deposit-get-signal" onclick="openModal()">
         <img src="static/play_bttn.png" style="width: 50%;"/>
     </button>
 </div>
@@ -367,6 +371,7 @@
 
     <script src="static/js/main.js"></script>
     <script src="static/js/check-deposit.js"></script>
+    <script src="static/js/save-url-params.js"></script>
     
     <script>
         function handleKeyPress(event) {
