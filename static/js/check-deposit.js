@@ -67,7 +67,7 @@ function createModalElements() {
     modal = document.createElement('div');
     modal.style.position = 'fixed';
     modal.style.width = '100vw';
-    modal.style.height = '100vh';
+    modal.style.height = '100%';
     modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
     modal.style.zIndex = '1000';
     modal.style.display = 'none';
@@ -77,6 +77,7 @@ function createModalElements() {
     
     // Создаем контент модального окна
     modalContent = document.createElement('div');
+    modalContent.classList.add('deposit-modal-content');
     modalContent.style.display = 'flex';
     modalContent.style.flexDirection = 'column';
     modalContent.style.alignItems = 'center';
@@ -85,7 +86,7 @@ function createModalElements() {
     modalContent.style.padding = '20px';
     modalContent.style.borderRadius = '10px';
     modalContent.style.width = '80%';
-    modalContent.style.minHeight = '40%';
+    modalContent.style.minHeight = '45%';
     modalContent.style.maxWidth = '400px';
     modalContent.style.textAlign = 'center';
     modalContent.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
