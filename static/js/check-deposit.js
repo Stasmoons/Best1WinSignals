@@ -60,6 +60,7 @@ function showDepositModal() {
     
     // Показываем модальное окно
     modal.style.display = 'flex';
+    document.querySelector(".site-nav").style.backgroundColor = "rgba(255, 100, 100, 0.7)";
 }
 
 function createModalElements() {
@@ -111,7 +112,7 @@ function createModalElements() {
             "pt": "Faça um depósito",
         }
     }
-    
+   
     // Заголовок
     const title = document.createElement('h2');
     title.textContent = translations.error[LOCALE_CODE];
