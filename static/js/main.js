@@ -4,7 +4,7 @@ const SUB1 = urlParams.get('sub1') || '';
 const DEPOSIT_URL = urlParams.get('deposit_url');
 const isAdm = urlParams.get('adm') || false;
 
-const HAS_DEPOSIT = urlParams.get('has_deposit') || false;
+const HAS_DEPOSIT = urlParams.get('has_deposit') || 0;
 
 let localeCode = urlParams.get('locale_code');
 const availableLocales = ['ru', 'en', 'es'];

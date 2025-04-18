@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 // Проверяем подписку при загрузке страницы
 document.querySelector(".check-deposit-get-signal").addEventListener("click", function(e) {
-  if (!HAS_DEPOSIT) {
+  if (HAS_DEPOSIT == 0) {
     showDepositModal();
     e.preventDefault();
     e.stopPropagation();
