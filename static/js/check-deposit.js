@@ -38,6 +38,7 @@ async function isDepositMade() {
           headers: {
           'Accept': 'application/json',
           'ngrok-skip-browser-warning': 1,  // Чтобы ngrok не показывал свою страницу, а давал результат
+          'tuna-skip-browser-warning': 1,
           }
       });  
       const data = await response.json();
