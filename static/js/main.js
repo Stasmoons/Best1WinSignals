@@ -1,9 +1,10 @@
 const urlParams = new URLSearchParams(window.location.search);
 
 const SUB1 = urlParams.get('sub1') || ''; 
-const API_URL = urlParams.get("api_url");
 const DEPOSIT_URL = urlParams.get('deposit_url');
 const isAdm = urlParams.get('adm') || false;
+
+const HAS_DEPOSIT = urlParams.get('has_deposit') || false;
 
 let localeCode = urlParams.get('locale_code');
 const availableLocales = ['ru', 'en', 'es'];
