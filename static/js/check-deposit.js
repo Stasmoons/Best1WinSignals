@@ -126,7 +126,7 @@ function createModalElements() {
     
     // Кнопка подписки
     modalSubscribeBtn = document.createElement('a');
-    modalSubscribeBtn.setAttribute("href", depositLink);  // Вставляем ссылку на 1Win
+    modalSubscribeBtn.setAttribute("href", DEPOSIT_URL);  // Вставляем ссылку на 1Win
     modalSubscribeBtn.textContent = translations["deposit_button"][LOCALE_CODE] + " ↗️";
     modalSubscribeBtn.style.backgroundColor = '#6e45e2';
     modalSubscribeBtn.style.color = 'white';
